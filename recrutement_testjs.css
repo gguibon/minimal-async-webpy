@@ -1,0 +1,64 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+body{
+    background-color:#032840;
+}
+
+.header{
+    padding: 20px;
+    display:flex;
+    justify-content: center;
+}
+.title{
+    font-size: 30px;
+    color: white;   
+}
+.btn{
+    padding: 15px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 8px;
+    color:#021928 ;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+.btn-back{
+    padding: 10px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 5px;
+    color:#021928 ;
+    font-size:  15px;
+    
+}
+
+.project{
+    background-color: white;
+    height: 500px;
+    padding: 15px;
+    margin: 15px;
+    font-size: 25px;
+    color: black;
+
+
+}
+.project-title{
+    font-size: 25px;
+    color: #021928;
+   
+    
+}
+.project-author{
+    font-size: 25px;
+    color: #1f5137;
+    
+    
+}
+.project-description{
+    font-size: 20px;
+    margin-top: 20px;
+}

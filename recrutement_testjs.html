@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Technical test</title>
+        <link rel="stylesheet" href="recrutement_testjs.css">
+        <style>
+        </style>
+    </head>
+    <body>  
+        <div class="container"> 
+        </div>
+    </body>
+
+    <script>
+    
+        const baseURL='http://127.0.0.1:8080'
+        
+        
+        async function getAllProjects()
+        {
+            let response= await fetch(baseURL+'/projectlist')
+            let listProject= await response.json()
+            if (response.ok)
+            {
+                console.log(listProject)
+                return listProject
+            }
+            else
+            {
+                console.log('error')
+            }
+        }
+
+        async function getProjectDetail(projectId)
+        {
+            let response =await fetch (baseURL+'/project/'+projectId)
+            let project= await response.json()
+            if (response.ok)
+            {
+                console.log(project)
+                return project
+            }
+            else
+            {
+                console.log('error')
+            }
+        }
+
+        async function renderProjectDetail(projectId)
+        {
+            let project = await getProjectDetail(projectId)
+            let container=document.querySelector('.container')
+            container.innerHTML=''
+            let html=`
+            <button class="btn-back" onclick="renderProjectsTitle()">Back</button>
+            <div class="project">
+                <span class="project-title">${project.title}</span> by  <span class="project-author"> ${project.author}</span>
+                <h4> Description</h4>
+                <div class="project-description">${project.description}</>
+            </div>`
+            container.innerHTML=html
+
+        }
+
+        async function renderProjectsTitle()
+        {
+            let projects= await getAllProjects()
+            let html=
+            `<div class="header">
+                    <div class="title"> Projects</div>
+            </div>`
+            projects.forEach(project => {
+                let htmlseg=
+                `<button class="btn" onclick="renderProjectDetail('${project.id}')">
+                    ${project.title}
+                </button>`
+                html+= htmlseg
+                
+            });
+            container=document.querySelector('.container')
+            container.innerHTML=html
+        }
+
+        renderProjectsTitle()
+    </script>
+</html> 
